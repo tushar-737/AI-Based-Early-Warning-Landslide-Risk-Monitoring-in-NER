@@ -1,0 +1,103 @@
+{
+  "accuracy": 0.7858,
+  "roc_auc_ovr": 0.9373,
+  "cv_accuracy_mean": 0.7845,
+  "cv_accuracy_std": 0.0051,
+  "n_train": 19200,
+  "n_test": 4800,
+  "labels": [
+    "Low",
+    "Moderate",
+    "High",
+    "Critical"
+  ],
+  "confusion_matrix": [
+    [
+      2390,
+      246,
+      4,
+      0
+    ],
+    [
+      354,
+      711,
+      135,
+      0
+    ],
+    [
+      3,
+      165,
+      454,
+      50
+    ],
+    [
+      0,
+      0,
+      71,
+      217
+    ]
+  ],
+  "feature_importance": [
+    {
+      "feature": "rain_72h",
+      "importance": 0.065
+    },
+    {
+      "feature": "rain_24h",
+      "importance": 0.04971
+    },
+    {
+      "feature": "api_14d",
+      "importance": 0.04208
+    },
+    {
+      "feature": "displacement_rate",
+      "importance": 0.03775
+    },
+    {
+      "feature": "slope",
+      "importance": 0.03192
+    },
+    {
+      "feature": "rock_strength",
+      "importance": 0.03029
+    },
+    {
+      "feature": "soil_moisture",
+      "importance": 0.02629
+    },
+    {
+      "feature": "ground_tilt",
+      "importance": 0.01708
+    },
+    {
+      "feature": "pore_pressure",
+      "importance": 0.0105
+    },
+    {
+      "feature": "soil_depth",
+      "importance": 0.01046
+    },
+    {
+      "feature": "road_cut",
+      "importance": 0.01042
+    },
+    {
+      "feature": "ndvi",
+      "importance": 0.0075
+    },
+    {
+      "feature": "drainage",
+      "importance": 0.00421
+    },
+    {
+      "feature": "seismic_zone",
+      "importance": 0.0015
+    },
+    {
+      "feature": "rain_1h",
+      "importance": 0.0005
+    }
+  ],
+  "algorithm": "HistGradientBoostingClassifier"
+}

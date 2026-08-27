@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NER Landslide Early Warning System</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">⛰</div>
+    <div>
+      <h1>AI-Based Early Warning &amp; Landslide Risk Monitoring</h1>
+      <p>North Eastern Region · Smart India Hackathon Prototype</p>
+    </div>
+  </div>
+  <div class="live"><span class="dot"></span> LIVE <span id="clock"></span></div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-view="dashboard">Dashboard</button>
+  <button class="tab" data-view="alerts">Alerts</button>
+  <button class="tab" data-view="simulator">What-If Simulator</button>
+  <button class="tab" data-view="model">Model</button>
+</nav>
+
+<main>
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="view active">
+    <div class="stats" id="stats"></div>
+    <div class="grid">
+      <div class="card map-card">
+        <h2>Monitored Slopes — Live Risk Map</h2>
+        <div id="map"></div>
+        <div class="legend">
+          <span><i style="background:#22c55e"></i>Low</span>
+          <span><i style="background:#eab308"></i>Moderate</span>
+          <span><i style="background:#f97316"></i>High</span>
+          <span><i style="background:#ef4444"></i>Critical</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Site Risk Ranking</h2>
+        <div id="siteList" class="site-list"></div>
+      </div>
+    </div>
+    <div class="card" id="detailCard" style="display:none">
+      <h2 id="detailTitle"></h2>
+      <div id="detailBody"></div>
+    </div>
+  </section>
+
+  <!-- ALERTS -->
+  <section id="alerts" class="view">
+    <div class="card">
+      <h2>Automated Alert Feed <small>(SMS / IVR / district EOC dispatch)</small></h2>
+      <div id="alertList" class="alert-list"></div>
+    </div>
+  </section>
+
+  <!-- SIMULATOR -->
+  <section id="simulator" class="view">
+    <div class="grid">
+      <div class="card">
+        <h2>Scenario Inputs</h2>
+        <div id="sliders"></div>
+        <div class="preset-row">
+          <button class="btn" data-preset="monsoon">Monsoon Cloudburst</button>
+          <button class="btn" data-preset="dry">Dry Season</button>
+          <button class="btn" data-preset="quake">Post-Seismic + Rain</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>AI Prediction</h2>
+        <div id="simResult" class="sim-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODEL -->
+  <section id="model" class="view">
+    <div class="grid">
+      <div class="card"><h2>Performance</h2><div id="perf"></div></div>
+      <div class="card"><h2>Feature Importance</h2><div id="fimp"></div></div>
+    </div>
+    <div class="card"><h2>Confusion Matrix</h2><div id="cmat"></div></div>
+    <div class="card architecture">
+      <h2>System Architecture</h2>
+      <div class="arch">
+        <div class="arch-node"><b>Data Sources</b><span>IMD rain gauges · IoT piezometers &amp; tiltmeters · Sentinel-1 InSAR · GSI inventory · DEM/NDVI</span></div>
+        <div class="arrow">→</div>
+        <div class="arch-node"><b>Ingestion</b><span>Streaming API · validation · feature engineering (API-14d, accumulations)</span></div>
+        <div class="arrow">→</div>
+        <div class="arch-node"><b>AI Engine</b><span>Gradient-boosted 4-class risk classifier + 6/12/24h forecast projection</span></div>
+        <div class="arrow">→</div>
+        <div class="arch-node"><b>Dissemination</b><span>Dashboard · SMS/IVR in local languages · district EOC &amp; NDRF/SDRF feeds</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/assets/app.js"></script>
+</body>
+</html>

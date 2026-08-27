@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 
 import joblib
 import numpy as np
+import pandas as pd
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -45,7 +46,7 @@ _LAST_LEVEL: Dict[str, str] = {}
 
 # ---------------- core inference ----------------
 def _predict(rows: List[dict]) -> List[dict]:
-    X = np.array([[r[f] for f in FEATURES] for r in rows], dtype=float)
+    X = pd.DataFrame([[r[f] for f in FEATURES] for r in rows], columns=FEATURES)
     proba = MODEL.predict_proba(X)
     idx = proba.argmax(axis=1)
     out = []

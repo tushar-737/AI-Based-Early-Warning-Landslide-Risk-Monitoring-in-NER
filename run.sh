@@ -2,7 +2,7 @@
 # One-command launcher for the NER Landslide Early Warning System.
 set -e
 cd "$(dirname "$0")"
-pip install -r requirements.txt
+pip install --break-system-packages -r requirements.txt 2>/dev/null || pip install -r requirements.txt
 if [ ! -f models/landslide_model.joblib ]; then
   echo "==> Generating dataset and training model..."
   python ml/generate_dataset.py
